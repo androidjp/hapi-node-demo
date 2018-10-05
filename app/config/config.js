@@ -1,9 +1,7 @@
 const env2 = require('env2');
-if (process.env.NODE_ENV === 'production') {
-  env2('./.env.prod');
-} else {
-  env2('./.env');
-}
+const path = require('path');
+const DEFAULT_ENV = 'development';
+env2(path.join(process.cwd(),`../env/.env.${process.env.NODE_ENV || DEFAULT_ENV}`));
 
 const {env} = process;
 
